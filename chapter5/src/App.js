@@ -1,18 +1,16 @@
 import './App.css';
-
-function Header() 
-{
-  return (
-    <header>
-      <h1>header</h1>
-    </header>
-  )
-}
+import Header from './component/Header';
+import Body from './component/Body';
+import Footer from './component/Footer';
 
 
 function App() {
   return (
-    <div className="App"></div>
+    <div className="App">
+      <Header />
+      <Body />
+      <Footer />
+    </div>
   );
 }
 
