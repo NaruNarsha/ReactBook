@@ -4,6 +4,10 @@ import Body from './component/Body';
 import Footer from './component/Footer';
 
 
+function ChildComp(){
+  return <div>child component</div>
+}
+
 function App() {
 
   const BodyProps = {
@@ -15,7 +19,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Body {...BodyProps} />
+      <Body>
+        <ChildComp />
+      </Body>
       <Footer />
     </div>
   );
