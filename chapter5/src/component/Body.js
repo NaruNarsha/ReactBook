@@ -1,5 +1,8 @@
 import "./Body.css";
-import { useState } from "react";
+//import { useState } from "react";
+import { useRef, useState } from "react";
+
+
 // function Body( {name, location, favorList = []}) {
 
 //     console.log(name, location, favorList);
@@ -208,8 +211,7 @@ import { useState } from "react";
 //==============================================================================
 // Props와 State
 
-
-
+/*
 function Viewer({number}){
     return <div>{number % 2 === 0 ? <h3>짝수</h3> : <h3>홀수</h3> }</div>
 }
@@ -235,7 +237,107 @@ function Body(){
             <button onClick={onIncrease}>+</button>
         </div>
     );
+}
+*/
 
+
+
+
+//==============================================================================
+// P240 State와 자식 컴포넌트
+/*
+function Viewer(){
+    console.log("Viewer component update");
+    return <div>Viewer</div>
+}
+
+
+function Body(){
+    const [number, setNumber] = useState(0);
+
+    function onIncrease(){
+        setNumber(number + 1);
+    };
+
+    const onDecrease = () => {
+        setNumber(number - 1);
+    };
+
+    return (
+        <div>
+            <h2>{number}</h2>
+            <Viewer />
+            <div>
+                <button onClick={onDecrease}>-</button>
+                <button onClick={onIncrease}>+</button>
+            </div>
+        </div>
+    )
+}
+*/
+
+
+
+
+
+//==============================================================================
+// Ref 
+
+/*
+function Body(){
+    const [text, setText] = useState("");
+
+    const handleOnChange = (e) =>{
+        setText(e.target.value);
+    };
+
+    const handleOnClick = () => {
+        alert(text);
+    };
+
+    return (
+        <div>
+            <input value={text} onChange={handleOnChange} />
+            <button onClick={handleOnClick}>작성 완료</button>
+        </div>
+    );
+}
+*/
+
+
+function Body(){
+    const [text, setText] = useState("");
+    const textRef = useRef();
+
+    const handleOnChange = (e) => {
+        setText(e.target.value);
+    };
+
+    // function handleOnClick(){
+    //     alert(text);
+    //     textRef.current.value = "";
+    // };
+
+    function handleOnClick(){
+
+        console.log(text.length);
+
+        if(text.length < 5){
+            textRef.current.focus();
+        }
+        else{
+            alert(text);
+            setText("");
+        }
+    }
+
+
+    return (
+        <div>
+            <input ref={textRef} value={text} onChange ={handleOnChange} />
+            <button onClick={handleOnClick}>작성 완료</button>
+        </div>
+    );
 
 }
 
