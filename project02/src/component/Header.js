@@ -1,3 +1,5 @@
+import './Header.css';
+
 function Header(){
     return  <div className ="Header">
                 <h3>오늘은 😊</h3>
