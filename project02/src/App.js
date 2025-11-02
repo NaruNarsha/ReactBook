@@ -33,6 +33,7 @@ function App() {
 
   const idRef = useRef(3);
 
+
   function onCreate(content){
     const newItem = {
       id: idRef.current,
@@ -45,13 +46,11 @@ function App() {
     idRef.current += 1;
   };
 
-
-
   return (
     <div className="App">
       <Header />
       <TodoEditor onCreate = {onCreate}/>
-      <TodoList />
+      <TodoList todo={todo}/>
     </div>
     );
 }
